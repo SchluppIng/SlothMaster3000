@@ -1,6 +1,7 @@
 #include <HX711.h>
 #include <ArduinoSTL.h>
 #include "Dispaly/display.h"
+#include <algorithm>
 
 //Pins for Load cells
 #define DOUT_PIN_LEFT 4
@@ -20,6 +21,8 @@ private:
     std::vector<float> vctLeftHandForce;
     std::vector<float> vctRightHandForce;
     const float gravity = 9.81;
+    //bool read  = true;
+    unsigned long time;
     display disp;
 
 public:

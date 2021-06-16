@@ -14,4 +14,5 @@ void setup()
 void loop() 
 {
   cell.readLoadCell();
+  cell.tareLoadCell();
 }
