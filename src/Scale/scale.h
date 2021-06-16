@@ -1,6 +1,6 @@
 #include <HX711.h>
 #include <ArduinoSTL.h>
-#include "Dispaly/display.h"
+
 #include <algorithm>
 
 //Pins for Load cells
@@ -23,7 +23,8 @@ private:
     const float gravity = 9.81;
     //bool read  = true;
     unsigned long time;
-    display disp;
+    long zeroFacLeft, zeroFacRight;
+
 
 public:
     //Constructor
@@ -32,4 +33,6 @@ public:
     //Methods
     void tareLoadCell();
     void readLoadCell();
+    void comitValuesToDisplay();
+    void prepare();
 };

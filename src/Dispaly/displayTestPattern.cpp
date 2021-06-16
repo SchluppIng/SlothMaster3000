@@ -55,5 +55,6 @@ void display::displayTestPattern()
   Disp.println("S. Schonhoeft");
   Disp.setCursor(23, 44);
   Disp.println("Dec. 2019");
+  
   displayDelay(3000);
 }

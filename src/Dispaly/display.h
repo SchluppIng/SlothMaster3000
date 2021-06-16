@@ -1,5 +1,6 @@
 #include <Adafruit_SSD1331.h>
 #include <Adafruit_GFX.h>
+#include <Adafruit_I2CDevice.h>
 
 //Pins for Oled Display
 // You can use any (4 or) 5 pins
@@ -9,11 +10,10 @@
 #define rst  9
 #define dc   8
 
-Adafruit_SSD1331 Disp;
-
 class display
 {
 private:
+    Adafruit_SSD1331 Disp = Adafruit_SSD1331(cs, dc, rst);
     // Color definitions
     #define BLACK           0x0000
     #define BLUE            0x001F
@@ -31,5 +31,7 @@ public:
     //Methods
     void displayTestPattern();
     void displayDelay(const int &ms);
-    void displayWriteText(String text, int xpos, int ypos);
+    void displayWriteText(const String& text, const float& value, const String& unit, const int& xpos, const int& ypos);
+    void displayWriteText(const String& text, const int& xpos, const int& ypos);
+    void displayTimer(const String& text, const int& ms, const bool& WaitHang);
 };
