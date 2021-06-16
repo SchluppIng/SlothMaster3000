@@ -1,6 +1,6 @@
+#include <Arduino.h>
 #include <HX711.h>
 #include <ArduinoSTL.h>
-
 #include <algorithm>
 
 //Pins for Load cells

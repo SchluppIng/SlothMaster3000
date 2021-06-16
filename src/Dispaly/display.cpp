@@ -45,6 +45,3 @@ void display::displayTimer(const String& text, const int& ms, const bool& WaitHa
     else
         Disp.println(ms, 1);
 }
-
-
-

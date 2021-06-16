@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include "Scale/scale.h"
-#include "Dispaly/display.h"
+//#include "Dispaly/display.h"
 
-display disp;
+//display disp;
 loadCell cell;
 
 void setup() 
