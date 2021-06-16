@@ -30,5 +30,6 @@ public:
     display();
     //Methods
     void displayTestPattern();
-
+    void displayDelay(const int &ms);
+    void displayWriteText(String text, int xpos, int ypos);
 };

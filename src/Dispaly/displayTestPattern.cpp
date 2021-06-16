@@ -44,5 +44,16 @@ void display::displayTestPattern()
     }
   }
   Disp.endWrite();
+  Disp.fillScreen(DBLUE);
+  Disp.drawRect(0, 0, 96, 64, GREEN);
 
+  Disp.setTextColor(CYAN);
+  Disp.setCursor(8, 15);
+  Disp.setTextSize(1);
+  Disp.println("Temp. Monitor");
+  Disp.setCursor(8, 29);
+  Disp.println("S. Schonhoeft");
+  Disp.setCursor(23, 44);
+  Disp.println("Dec. 2019");
+  displayDelay(3000);
 }

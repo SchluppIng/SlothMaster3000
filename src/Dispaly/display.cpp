@@ -6,3 +6,15 @@ display::display()
     Disp.begin();
     displayTestPattern();
 }
+
+void display::displayDelay(const int &ms)
+{
+    delay(ms);
+}
+
+void display::displayWriteText(String text, int xpos, int ypos)
+{
+
+}
+
+
