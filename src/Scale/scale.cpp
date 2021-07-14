@@ -1,7 +1,8 @@
 #include "Scale/scale.h"
 #include "Dispaly/display.h"
+#include "Controller/controller.h"
 
-display disp;
+//display disp;
 //Constructor
 loadCell::loadCell()
 {
@@ -11,21 +12,15 @@ loadCell::loadCell()
 
 void loadCell::tareLoadCell()
 {   
-    disp.displayWriteText("Begin Calibration", 3, 6);
     zeroFacLeft = LoadCellLeft.read_average();
     LoadCellLeft.set_scale(zeroFacLeft);
     LoadCellLeft.tare();
-    disp.displayWriteText("Left: ", 3, 13);
-    disp.displayWriteText(String(zeroFacLeft), 3, 25);
 
     zeroFacRight = LoadCellRight.read_average();
     LoadCellRight.set_scale(zeroFacRight);
     LoadCellRight.tare();
-    disp.displayWriteText("Right: ", 3, 20);
-    disp.displayWriteText(String(zeroFacRight), 3, 25);
 
-    disp.displayWriteText("Prepare!", 3, 27);
-    disp.displayDelay(3000);
+    controller con(zeroFacLeft, zeroFacRight);
 }
 
 void loadCell::readLoadCell()
@@ -35,10 +30,9 @@ void loadCell::readLoadCell()
     while(time <= 7000)
     {   
         time = millis();
-        disp.displayTimer("Hang for: ", time / 1000, false);
+        //disp.displayTimer("Hang for: ", time / 1000, false);
         vctLeftHandForce.push_back(LoadCellLeft.read());
-        vctRightHandForce.push_back(LoadCellRight.read());
-        
+        vctRightHandForce.push_back(LoadCellRight.read());        
     }
 
     //Average values
@@ -46,7 +40,6 @@ void loadCell::readLoadCell()
     {
         leftHandForceAvr += vctLeftHandForce.at(i);
         rightHandForceAvr += vctLeftHandForce.at(i);
-
     }
     
     leftHandForceAvr = leftHandForceAvr / vctLeftHandForce.size();
@@ -58,7 +51,7 @@ void loadCell::readLoadCell()
 
 void loadCell::comitValuesToDisplay()
 {
-    disp.displayWriteText("Avr. Left: ", leftHandForceAvr, "kg", 3, 6);
+    /*disp.displayWriteText("Avr. Left: ", leftHandForceAvr, "kg", 3, 6);
     disp.displayWriteText("Avr. Right: ", rightHandForceAvr, "kg", 3, 18);
     disp.displayWriteText("Avr. Total: ", leftHandForceAvr + rightHandForceAvr, "kg", 3, 6);
 
@@ -72,7 +65,7 @@ void loadCell::comitValuesToDisplay()
 
     disp.displayWriteText("Max. Left: ", leftHandForceAvr * gravity, "N", 3, 6);
     disp.displayWriteText("Max. Right: ", rightHandForceAvr * gravity, "N", 3, 18);
-    disp.displayWriteText("Max. Total: ", (leftHandForceAvr + rightHandForceAvr) * gravity, "N", 3, 6);
+    disp.displayWriteText("Max. Total: ", (leftHandForceAvr + rightHandForceAvr) * gravity, "N", 3, 6);*/
 }
 
 void loadCell::prepare()
@@ -83,6 +76,6 @@ void loadCell::prepare()
     {   
         mytime = mytime - time;
         time = millis();
-        disp.displayTimer("Hang for: ", time / 1000, true);        
+        //disp.displayTimer("Hang for: ", time / 1000, true);        
     }
 }
