@@ -1,21 +1,21 @@
 #include <Arduino.h>
-#include "Scale/scale.h"
-//#include "Dispaly/display.h"
+//#include "Scale/scale.h"
 
-//display disp;
-loadCell cell;
+//loadCell cell;
 
 void setup() 
 {
   Serial.begin(9600);
   // put your setup code here, to run once:
-  cell.tareLoadCell();
+  //cell.tareLoadCell();
 }
 
 void loop() 
 {
-  cell.prepare();
-  cell.readLoadCell();
-  //cell.tareLoadCell();
-  cell.comitValuesToDisplay();
+  Serial.println("Test");
+  Serial.println("next");
+  //cell.prepare();
+  //cell.readLoadCell();
+  ////cell.tareLoadCell();
+  //cell.comitValuesToDisplay();
 }

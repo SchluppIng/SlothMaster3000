@@ -1,6 +1,4 @@
 #include "Scale/scale.h"
-#include "Dispaly/display.h"
-#include "Controller/controller.h"
 
 //display disp;
 //Constructor
@@ -8,6 +6,7 @@ loadCell::loadCell()
 {
     LoadCellLeft.begin(DOUT_PIN_LEFT, SCK_PIN_LEFT);
     LoadCellRight.begin(DOUT_PIN_RIGHT, SCK_PIN_RIGHT);
+    tareLoadCell();
 }
 
 void loadCell::tareLoadCell()
@@ -20,7 +19,7 @@ void loadCell::tareLoadCell()
     LoadCellRight.set_scale(zeroFacRight);
     LoadCellRight.tare();
 
-    controller con(zeroFacLeft, zeroFacRight);
+    //controller con(zeroFacLeft, zeroFacRight);
 }
 
 void loadCell::readLoadCell()
@@ -36,7 +35,7 @@ void loadCell::readLoadCell()
     }
 
     //Average values
-    for(int i = 0; i < vctLeftHandForce.size(); i++)
+    for(unsigned int i = 0; i < vctLeftHandForce.size(); i++)
     {
         leftHandForceAvr += vctLeftHandForce.at(i);
         rightHandForceAvr += vctLeftHandForce.at(i);
